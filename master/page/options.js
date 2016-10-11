@@ -13,6 +13,12 @@ if(typeof zJS.Options == "undefined") {
 zJS.Options = {
     init: function(){
         console.log("options init");
+        if(("ikaEasyTab" in window) && window.ikaEasyTab){
+            console.log("WAS SELECTED");
+        }
+        else{
+            console.log("WASNT SELECTED "+ ("ikaEasyTab" in window) + "   "+window.ikaEasyTab);
+        }
         this.options = zJS.Utils.ls.getValue("options") || {};
         if($("#js_tabIkaEasyOptions").length){
             return false;
@@ -26,7 +32,7 @@ zJS.Options = {
         var innerContent = $('<div class="content" />').appendTo(contentBox);
         $('<div class="footer" />').appendTo(contentBox);
         zJS.Options.$content = $('<table class="options table01"></table>');
-
+        window.ikaEasyTab = false;
         // Options start
 
         this.addOption({
